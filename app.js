@@ -151,7 +151,7 @@ function update() {
   upgradeSecond.innerText = ("401K Account: " + secondUpgrade.toString())
 
   let upgradeThird = document.getElementById("third-upgrade-counter")
-  upgradeThird.innerText = ("Stock Invester: " + thirdUpgrade.toString())
+  upgradeThird.innerText = ("Stock Investor: " + thirdUpgrade.toString())
 
   let upgradeFourth = document.getElementById("fourth-upgrade-counter")
   upgradeFourth.innerText = ("Power Plant: " + fourthUpgrade.toString())
