@@ -4,6 +4,20 @@ main{flex-grow: 1;}
 footer{height: 10vh;}
 
 body{
-  background-image: url(street.jpg);
+  background-image: url(street.png);
   background-size: cover;
+}
+
+.image-border{
+  border-radius: 50%;
+  animation: rotation 10s infinite linear;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
 }
