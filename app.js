@@ -21,19 +21,19 @@ let clickUpgrades = {
 
 let automaticUpgrades = {
   one: {
-    price: 600,
+    price: 1000,
     quantity: 0,
     multiplier: 20
   },
   two: {
-    price: 1200,
+    price: 2500,
     quantity: 0,
     multiplier: 50
   },
   three: {
-    price: 5000,
+    price: 15000,
     quantity: 0,
-    multiplier: 100
+    multiplier: 250
   }
 };
 
@@ -57,7 +57,7 @@ function mine() {
 function clickerPowerUp() {
   clickUpgrades.mouse.quantity += 1
   dollars -= clickUpgrades.mouse.price
-  clickUpgrades.mouse.price += 100
+  clickUpgrades.mouse.price += 200
   // console.log(clickUpgrades.mouse.quantity)
   update()
 }
@@ -65,7 +65,7 @@ function clickerPowerUp() {
 //addes passive multiplier one
 function passiveUpgrade() {
   dollars -= automaticUpgrades.one.price
-  automaticUpgrades.one.price += 150
+  automaticUpgrades.one.price += 400
 
   clearTimeInterval();
   (automaticUpgrades.one.quantity += 1)
@@ -76,7 +76,7 @@ function passiveUpgrade() {
 //addes passive multiplier two
 function passiveUpgradeTwo() {
   dollars -= automaticUpgrades.two.price
-  automaticUpgrades.two.price += 300
+  automaticUpgrades.two.price += 5000
 
   clearTimeInterval();
   (automaticUpgrades.two.quantity += 1)
@@ -147,29 +147,29 @@ function update() {
   let upgradeFourth = document.getElementById("fourth-upgrade-counter")
   upgradeFourth.innerText = fourthUpgrade.toString()
 
-  // if (dollars >= clickUpgrades.mouse.price) {
-  //   document.getElementById("clicker-power-up").removeAttribute("disabled")
-  // } else {
-  //   document.getElementById("clicker-power-up").setAttribute("disabled", "")
-  // }
+  if (dollars >= clickUpgrades.mouse.price) {
+    document.getElementById("clicker-power-up").removeAttribute("disabled")
+  } else {
+    document.getElementById("clicker-power-up").setAttribute("disabled", "")
+  }
 
-  // if (dollars >= automaticUpgrades.one.price) {
-  //   document.getElementById("passive-power-up-one").removeAttribute("disabled")
-  // } else {
-  //   document.getElementById("passive-power-up-one").setAttribute("disabled", "")
-  // }
+  if (dollars >= automaticUpgrades.one.price) {
+    document.getElementById("passive-power-up-one").removeAttribute("disabled")
+  } else {
+    document.getElementById("passive-power-up-one").setAttribute("disabled", "")
+  }
 
-  // if (dollars >= automaticUpgrades.two.price) {
-  //   document.getElementById("passive-power-up-two").removeAttribute("disabled")
-  // } else {
-  //   document.getElementById("passive-power-up-two").setAttribute("disabled", "")
-  // }
+  if (dollars >= automaticUpgrades.two.price) {
+    document.getElementById("passive-power-up-two").removeAttribute("disabled")
+  } else {
+    document.getElementById("passive-power-up-two").setAttribute("disabled", "")
+  }
 
-  // if (dollars >= automaticUpgrades.three.price) {
-  //   document.getElementById("passive-power-up-three").removeAttribute("disabled")
-  // } else {
-  //   document.getElementById("passive-power-up-three").setAttribute("disabled", "")
-  // }
+  if (dollars >= automaticUpgrades.three.price) {
+    document.getElementById("passive-power-up-three").removeAttribute("disabled")
+  } else {
+    document.getElementById("passive-power-up-three").setAttribute("disabled", "")
+  }
 }
 
 
