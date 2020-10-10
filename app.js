@@ -1,12 +1,18 @@
 let dollars = 0
 let dollarCounter = 0
 let intervalTimer = setInterval(interval, 1000)
-let intervalTimerTwo = setInterval(interval, 1000)
+// let intervalTimerTwo = setInterval(interval, 1000)
+let passiveUpgrades = 0
+let autoHits = 0
+let firstUpgrade = 0
+let secondUpgrade = 0
+let thirdUpgrade = 0
+let fourthUpgrade = 0
 
 
 let clickUpgrades = {
   mouse: {
-    price: 10,
+    price: 50,
     quantity: 0,
     multiplier: 1
   }
@@ -68,25 +74,25 @@ function passiveUpgradeTwo() {
 
   clearTimeInterval();
   (automaticUpgrades.two.quantity += 1)
-  intervalTimerTwo = setInterval(intervalTwo, 1000)
+  intervalTimer = setInterval(interval, 1000)
   update()
 }
 
 //funtion set for interval for passive multiplier
 function interval() {
-  let passiveUpgrades = (automaticUpgrades.one.quantity * automaticUpgrades.one.multiplier)
+  passiveUpgrades = ((automaticUpgrades.one.quantity * automaticUpgrades.one.multiplier) + (automaticUpgrades.two.quantity * automaticUpgrades.two.multiplier))
   dollars += passiveUpgrades
   console.log(dollars)
   update()
 }
 
 //function set for interval two for passive multiplier
-function intervalTwo() {
-  let passiveUpgradesTwo = (automaticUpgrades.two.quantity * automaticUpgrades.two.multiplier)
-  dollars += passiveUpgradesTwo
-  console.log(dollars)
-  update()
-}
+// function intervalTwo() {
+//   let passiveUpgradesTwo = (automaticUpgrades.two.quantity * automaticUpgrades.two.multiplier)
+//   dollars += passiveUpgradesTwo
+//   console.log(dollars)
+//   update()
+// }
 
 //clears interval to start new interval
 function clearTimeInterval() {
@@ -94,17 +100,34 @@ function clearTimeInterval() {
 }
 
 //clears interval to start new interval
-function clearTimeIntervalTwo() {
-  clearInterval(intervalTimerTwo)
-}
+// function clearTimeIntervalTwo() {
+//   clearInterval(intervalTimerTwo)
+// }
 
 //updates the information on the page to the user
 function update() {
+  autoHits = passiveUpgrades
+  firstUpgrade = clickUpgrades.mouse.quantity
+  secondUpgrade = automaticUpgrades.one.quantity
+  thirdUpgrade = automaticUpgrades.two.quantity
+
   let dollarCounter = document.getElementById("dollar-counter")
   dollarCounter.innerText = dollars.toString()
 
   let autoCounter = document.getElementById("auto-counter")
   autoCounter.innerText = autoHits.toString()
+
+  let upgradeFirst = document.getElementById("first-upgrade-counter")
+  upgradeFirst.innerText = firstUpgrade.toString()
+
+  let upgradeSecond = document.getElementById("second-upgrade-counter")
+  upgradeSecond.innerText = secondUpgrade.toString()
+
+  let upgradeThird = document.getElementById("third-upgrade-counter")
+  upgradeThird.innerText = thirdUpgrade.toString()
+
+  // let upgradeFourth = document.getElementById("fourth-upgrade-counter")
+  // upgradeFourth.innerText = fourthUpgrade.toString()
 
   if (dollars >= clickUpgrades.mouse.price) {
     document.getElementById("clicker-power-up").removeAttribute("disabled")
