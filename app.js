@@ -9,6 +9,10 @@ let firstUpgrade = 0
 let secondUpgrade = 0
 let thirdUpgrade = 0
 let fourthUpgrade = 0
+let firstPrice = 0
+let secondPrice = 0
+let thirdPrice = 0
+let fourthPrice = 0
 
 
 let clickUpgrades = {
@@ -57,7 +61,7 @@ function mine() {
 function clickerPowerUp() {
   clickUpgrades.mouse.quantity += 1
   dollars -= clickUpgrades.mouse.price
-  clickUpgrades.mouse.price += 200
+  clickUpgrades.mouse.price += 150
   // console.log(clickUpgrades.mouse.quantity)
   update()
 }
@@ -128,6 +132,11 @@ function update() {
   secondUpgrade = automaticUpgrades.one.quantity
   thirdUpgrade = automaticUpgrades.two.quantity
   fourthUpgrade = automaticUpgrades.three.quantity
+  firstPrice = clickUpgrades.mouse.price
+  secondPrice = automaticUpgrades.one.price
+  thirdPrice = automaticUpgrades.two.price
+  fourthPrice = automaticUpgrades.three.price
+
 
   let dollarCounter = document.getElementById("dollar-counter")
   dollarCounter.innerText = dollars.toString()
@@ -136,16 +145,32 @@ function update() {
   autoCounter.innerText = autoHits.toString()
 
   let upgradeFirst = document.getElementById("first-upgrade-counter")
-  upgradeFirst.innerText = firstUpgrade.toString()
+  upgradeFirst.innerText = ("Hard Worker: " + firstUpgrade.toString())
 
   let upgradeSecond = document.getElementById("second-upgrade-counter")
-  upgradeSecond.innerText = secondUpgrade.toString()
+  upgradeSecond.innerText = ("401K Account: " + secondUpgrade.toString())
 
   let upgradeThird = document.getElementById("third-upgrade-counter")
-  upgradeThird.innerText = thirdUpgrade.toString()
+  upgradeThird.innerText = ("Stock Invester: " + thirdUpgrade.toString())
 
   let upgradeFourth = document.getElementById("fourth-upgrade-counter")
-  upgradeFourth.innerText = fourthUpgrade.toString()
+  upgradeFourth.innerText = ("Power Plant: " + fourthUpgrade.toString())
+
+  let priceFirst = document.getElementById("price-of-first-upgrade")
+  priceFirst.innerText = firstPrice.toString()
+
+  let priceSecond = document.getElementById("price-of-second-upgrade")
+  priceSecond.innerText = secondPrice.toString()
+
+  let priceThird = document.getElementById("price-of-third-upgrade")
+  priceThird.innerText = thirdPrice.toString()
+
+  let priceFourth = document.getElementById("price-of-fourth-upgrade")
+  priceFourth.innerText = fourthPrice.toString()
+
+
+
+
 
   if (dollars >= clickUpgrades.mouse.price) {
     document.getElementById("clicker-power-up").removeAttribute("disabled")
