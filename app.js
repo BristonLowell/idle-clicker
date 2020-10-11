@@ -9,10 +9,12 @@ let firstUpgrade = 0
 let secondUpgrade = 0
 let thirdUpgrade = 0
 let fourthUpgrade = 0
+// let secondClickerUpgrade = 0
 let firstPrice = 0
 let secondPrice = 0
 let thirdPrice = 0
 let fourthPrice = 0
+// let secondClickerPrice = 0
 
 
 let clickUpgrades = {
@@ -21,6 +23,11 @@ let clickUpgrades = {
     quantity: 0,
     multiplier: 2
   }
+  // two: {
+  //   price: 50000,
+  //   quantity: 0,
+  //   multiplier: 150
+  // }
 };
 
 let automaticUpgrades = {
@@ -43,8 +50,7 @@ let automaticUpgrades = {
 
 //Increase dollars by one
 function mine() {
-  if (clickUpgrades.mouse.quantity == 0) dollars++
-
+  dollars++
   for (const key in clickUpgrades) {
     if (clickUpgrades.hasOwnProperty(key)) {
       const powerUp = clickUpgrades[key]
@@ -61,10 +67,19 @@ function mine() {
 function clickerPowerUp() {
   clickUpgrades.mouse.quantity += 1
   dollars -= clickUpgrades.mouse.price
-  clickUpgrades.mouse.price += 150
+  clickUpgrades.mouse.price += 50
   // console.log(clickUpgrades.mouse.quantity)
   update()
 }
+
+//adds multiplier to clicker upgrade two
+// function clickerPowerUpTwo() {
+//   clickUpgrades.two.quantity += 1
+//   dollars -= clickUpgrades.two.price
+//   clickUpgrades.two.price += 15000
+//   // console.log(clickUpgrades.two.quantity)
+//   update()
+// }
 
 //addes passive multiplier one
 function passiveUpgrade() {
@@ -132,10 +147,12 @@ function update() {
   secondUpgrade = automaticUpgrades.one.quantity
   thirdUpgrade = automaticUpgrades.two.quantity
   fourthUpgrade = automaticUpgrades.three.quantity
+  // secondClickerUpgrade = clickUpgrades.two.quantity
   firstPrice = clickUpgrades.mouse.price
   secondPrice = automaticUpgrades.one.price
   thirdPrice = automaticUpgrades.two.price
   fourthPrice = automaticUpgrades.three.price
+  // secondClickerPrice = clickUpgrades.two.price
 
 
   let dollarCounter = document.getElementById("dollar-counter")
@@ -156,6 +173,9 @@ function update() {
   let upgradeFourth = document.getElementById("fourth-upgrade-counter")
   upgradeFourth.innerText = ("Power Plant: " + fourthUpgrade.toString())
 
+  // let upgradeSecondClicker = document.getElementById("second-clicker-upgrade")
+  // upgradeSecondClicker.innerText = ("Ultimate Worker: " + secondClickerUpgrade.toString())
+
   let priceFirst = document.getElementById("price-of-first-upgrade")
   priceFirst.innerText = firstPrice.toString()
 
@@ -167,6 +187,9 @@ function update() {
 
   let priceFourth = document.getElementById("price-of-fourth-upgrade")
   priceFourth.innerText = fourthPrice.toString()
+
+  // let priceSecondClicker = document.getElementById("price-of-second-clicker-upgrade")
+  // priceSecondClicker.innerText = secondClickerPrice.toString()
 
 
 
@@ -195,6 +218,12 @@ function update() {
   } else {
     document.getElementById("passive-power-up-three").setAttribute("disabled", "")
   }
+
+  // if (dollars >= clickUpgrades.two.price) {
+  //   document.getElementById("clicker-power-up-two").removeAttribute("disabled")
+  // } else {
+  //   document.getElementById("clicker-power-up-two").setAttribute("disabled", "")
+  // }
 }
 
 
