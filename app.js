@@ -51,6 +51,8 @@ let automaticUpgrades = {
 //Increase dollars by one
 function mine() {
   dollars++
+  // document.getElementById("clicker-cooldown").setAttribute("disabled", "")
+  // setTimeout(clickerCooldown, 2000)
   for (const key in clickUpgrades) {
     if (clickUpgrades.hasOwnProperty(key)) {
       const powerUp = clickUpgrades[key]
@@ -62,6 +64,11 @@ function mine() {
   update()
   // alert(dollars)
 }
+
+//adds a cooldown to clicking
+// function clickerCooldown() {
+//   document.getElementById("clicker-cooldown").removeAttribute("disabled")
+// }
 
 //adds multiplier to clicker
 function clickerPowerUp() {
